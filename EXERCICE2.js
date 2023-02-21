@@ -9,15 +9,15 @@ const data = [
 const writeStream = fs.createWriteStream ('tondeuse.csv');
 writeStream.write('id,nom,puissance,autonomie,energie');
 
+for (let i = 0; i < 19; i++) {
+    data.forEach((dataRow) => {
+        var csv = '\n'+ dataRow.id + ',' + dataRow.nom + ',' + dataRow.puissance + ',' + dataRow.autonomie + ',' + dataRow.energie;
+    
 
-data.forEach((dataRow) => {
-    console.log(dataRow.id)
-    var csv = '\n'+ dataRow.id + dataRow.nom + dataRow.puissance + dataRow.autonomie + dataRow.energie;
-    csv += ',';
+        writeStream.write(csv)
 
-    writeStream.write(csv)
-
+    }
+    );
 }
-);
 
 writeStream.end;
